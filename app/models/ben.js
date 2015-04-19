@@ -25,7 +25,8 @@ Ben.reopenClass({
       department: 1,
       hairType: 2,
       hasBeard: true,
-      wearsGlasses: false
+      wearsGlasses: false,
+      avatar: 'images/limmer.png'
     },
     {
       id: 2,
@@ -33,7 +34,8 @@ Ben.reopenClass({
       department: 2,
       hairType: 1,
       hasBeard: false,
-      wearsGlasses: false
+      wearsGlasses: false,
+      avatar: 'images/donovan.png'
     },
     {
       id: 3,
@@ -41,7 +43,8 @@ Ben.reopenClass({
       department: 3,
       hairType: 1,
       hasBeard: false,
-      wearsGlasses: false
+      wearsGlasses: false,
+      avatar: 'images/swain.png'
     },
     {
       id: 4,
@@ -49,7 +52,8 @@ Ben.reopenClass({
       department: 4,
       hairType: 1,
       hasBeard: true,
-      wearsGlasses: true
+      wearsGlasses: true,
+      avatar: 'images/hoskins.png'
     },
     {
       id: 5,
