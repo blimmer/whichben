@@ -61,7 +61,8 @@ Ben.reopenClass({
       department: 5,
       hairType: 3,
       hasBeard: false,
-      wearsGlasses: false
+      wearsGlasses: false,
+      avatar: 'images/crawford.png'
     }
   ]
 });
