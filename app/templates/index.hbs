@@ -3,7 +3,8 @@
 <div class='filtered-bens-list'>
   {{#if currentQuestion}}
     {{ben-finder question=currentQuestion setFilter='setFilter'}}
-  {{else}}
+  {{/if}}
+  {{#if showUnsure}}
     <h2>Shoot, I don't know which one you're talking about.</h2>
     <p>Choose from the Bens below:</p>
   {{/if}}

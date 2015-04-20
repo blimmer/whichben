@@ -18,6 +18,18 @@ export default Ember.Controller.extend({
     return filteredBens;
   }),
 
+  noBensLeft: Ember.computed.equal('filteredBens.length', 0),
+  showUnsure: Ember.computed('noBensLeft', 'currentQuestion', function() {
+    var noBensLeft = this.get('noBensLeft');
+    var currentQuestion = this.get('currentQuestion');
+
+    if (noBensLeft || !currentQuestion) {
+      return true;
+    } else {
+      return false;
+    }
+  }),
+
   reset: function() {
     this.get('filters').forEach(function(filter) {
       filter.deleteRecord();
@@ -41,7 +53,7 @@ export default Ember.Controller.extend({
       this.incrementProperty('questionIndex');
 
       var filteredBens = this.get('filteredBens');
-      if(filteredBens.get('length') === 1) {
+      if (filteredBens.get('length') === 1) {
         this.send('foundBen', filteredBens.get('firstObject'));
       }
     }
