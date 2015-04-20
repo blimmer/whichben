@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   questionIndex: 0,
   questionComponents: Ember.A([
+    'ben-finder/concrete-questions/which-department',
     'ben-finder/concrete-questions/has-beard',
     'ben-finder/concrete-questions/wears-glasses',
     'ben-finder/unsure'
@@ -16,10 +17,10 @@ export default Ember.Controller.extend({
     }
   }),
 
-  filters: Ember.Object.create(),
-  filtersInvalidated: null,
-  filteredBens: Ember.computed('model', 'filters', 'filtersInvalidated', function() {
-    var filteredBens = this.get('model');
+  // filters: Ember.Object.create(),
+  // filtersInvalidated: null,
+  filteredBens: Ember.computed('model.bens.@each', 'filters', 'filtersInvalidated', function() {
+    var filteredBens = this.get('model.bens');
 
     var filters = this.get('filters');
     for (var filter in filters) {

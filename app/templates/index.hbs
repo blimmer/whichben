@@ -2,7 +2,7 @@
 
 <div class='filtered-bens-list'>
   {{#if currentQuestion}}
-    {{component currentQuestion setFilter='setFilter'}}
+    {{component currentQuestion setFilter='setFilter' departments=model.departments}}
   {{/if}}
 
   {{#if filteredBens}}
@@ -10,7 +10,7 @@
       {{ben-card ben=ben}}
     {{/each}}
   {{else}}
-    {{#each ben in model}}
+    {{#each ben in model.bens}}
       {{ben-card ben=ben}}
     {{/each}}
   {{/if}}

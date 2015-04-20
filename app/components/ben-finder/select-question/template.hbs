@@ -1,1 +1,6 @@
-{{yield}}
+<div class='question'>{{questionText}}</div>
+{{view "select"
+        content=options
+        value=selectedOption
+        optionValuePath="content.id"
+        optionLabelPath="content.name"}}
