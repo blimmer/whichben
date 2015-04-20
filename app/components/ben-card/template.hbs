@@ -1,5 +1,7 @@
-<div class='pic'>
-  <img class='avatar' src={{ben.avatar}} width='200' height='200'>
-</div>
-<div class='name'>{{ben.fullName}}</div>
-<div class='department'>{{ben.department.name}}</div>
+{{#link-to 'found-ben' ben}}
+  <div class='pic'>
+    <img class='avatar' src={{ben.avatar}} width='200' height='200'>
+  </div>
+  <div class='name'>{{ben.fullName}}</div>
+  <div class='department'>{{ben.department.name}}</div>
+{{/link-to}}

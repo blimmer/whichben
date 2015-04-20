@@ -6,4 +6,5 @@ var Router = Ember.Router.extend({
 });
 
 export default Router.map(function() {
+  this.route('found-ben', {path: '/found/:id'});
 });
