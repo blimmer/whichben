@@ -1,1 +1,14 @@
-{{yield}}
+<div class='question'>{{question.questionText}}</div>
+
+{{#if isBooleanQuestion}}
+<div class='btn-container'>
+  <button class='btn' {{action 'yes'}}>Yes</button>
+  <button class='btn' {{action 'no'}}>Nope</button>
+</div>
+{{else}}
+{{view "select"
+        content=question.options
+        value=selectedOption
+        optionValuePath="content.id"
+        optionLabelPath="content.name"}}
+{{/if}}

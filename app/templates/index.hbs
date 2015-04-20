@@ -2,7 +2,10 @@
 
 <div class='filtered-bens-list'>
   {{#if currentQuestion}}
-    {{component currentQuestion setFilter='setFilter' departments=model.departments}}
+    {{ben-finder question=currentQuestion setFilter='setFilter'}}
+  {{else}}
+    <h2>Shoot, I don't know which one you're talking about.</h2>
+    <p>Choose from the Bens below:</p>
   {{/if}}
 
   {{#if filteredBens}}

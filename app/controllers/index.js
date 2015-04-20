@@ -2,40 +2,42 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   questionIndex: 0,
-  questionComponents: Ember.A([
-    'ben-finder/concrete-questions/which-department',
-    'ben-finder/concrete-questions/has-beard',
-    'ben-finder/concrete-questions/wears-glasses',
-    'ben-finder/unsure'
-  ]),
-  currentQuestion: Ember.computed('questionComponents', 'questionIndex', 'filtersInvalidated', function() {
-    var questionComponents = this.get('questionComponents');
-    var questionIndex = this.get('questionIndex');
-
-    if (questionComponents.get('length') > questionIndex) {
-      return questionComponents.objectAt(questionIndex);
-    }
+  currentQuestion: Ember.computed('model.questions', 'questionIndex', function() {
+    return this.get('model.questions').objectAt(this.get('questionIndex'));
   }),
 
-  // filters: Ember.Object.create(),
-  // filtersInvalidated: null,
-  filteredBens: Ember.computed('model.bens.@each', 'filters', 'filtersInvalidated', function() {
+  filters: Ember.A([]),
+  filteredBens: Ember.computed('model.bens.@each', 'filters.[]', function() {
     var filteredBens = this.get('model.bens');
-
     var filters = this.get('filters');
-    for (var filter in filters) {
-      if (filters.hasOwnProperty(filter)) {
-        filteredBens = filteredBens.filterBy(filter, filters.get(filter));
-      }
-    }
+
+    filters.forEach(function(filter) {
+      filteredBens = filteredBens.filterBy(filter.get('property'), filter.get('value'));
+    });
 
     return filteredBens;
   }),
 
+  reset: function() {
+    this.get('filters').forEach(function(filter) {
+      filter.deleteRecord();
+    });
+
+    this.setProperties({
+      'filters': Ember.A([]),
+      'questionIndex': 0
+    });
+  },
+
   actions: {
-    setFilter: function (name, value) {
-      this.set(`filters.${name}`, value);
-      this.set('filtersInvalidated', Date.now());
+    setFilter: function (property, value, modifier) {
+      var filter = this.get('store').createRecord('filter', {
+        property: property,
+        value: value,
+        modifier: modifier
+      });
+      this.get('filters').pushObject(filter);
+
       this.incrementProperty('questionIndex');
 
       var filteredBens = this.get('filteredBens');
