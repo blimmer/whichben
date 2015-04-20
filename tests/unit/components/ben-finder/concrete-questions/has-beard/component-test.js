@@ -5,7 +5,7 @@ import {
 
 moduleForComponent('ben-finder/concrete-questions/has-beard', {
   // Specify the other units that are required for this test
-  // needs: ['component:foo', 'helper:bar']
+  // needs: ['component:ben-finder/boolean-question']
 });
 
 test('it renders', function(assert) {

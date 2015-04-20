@@ -5,7 +5,7 @@ import {
 
 moduleForModel('ben', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:department', 'model:hair-type']
 });
 
 test('it exists', function(assert) {

@@ -9,7 +9,8 @@ export default Ember.Route.extend({
 
     controller.setProperties({
       questionIndex: 0,
-      filtersInvalidated: Date.now()
+      filtersInvalidated: Date.now(),
+      filters: Ember.Object.create()
     });
   },
   actions: {

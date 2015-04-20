@@ -1,8 +1,6 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
-  className: 'filtered-ben-list',
-
+export default Ember.Controller.extend({
   questionIndex: 0,
   questionComponents: Ember.A([
     'ben-finder/concrete-questions/has-beard',
@@ -20,8 +18,8 @@ export default Ember.Component.extend({
 
   filters: Ember.Object.create(),
   filtersInvalidated: null,
-  filteredBens: Ember.computed('bens', 'filtersInvalidated', function() {
-    var filteredBens = this.get('bens');
+  filteredBens: Ember.computed('model', 'filters', 'filtersInvalidated', function() {
+    var filteredBens = this.get('model');
 
     var filters = this.get('filters');
     for (var filter in filters) {
@@ -41,7 +39,7 @@ export default Ember.Component.extend({
 
       var filteredBens = this.get('filteredBens');
       if(filteredBens.get('length') === 1) {
-        this.sendAction('foundBen', filteredBens.get('firstObject'));
+        this.send('foundBen', filteredBens.get('firstObject'));
       }
     }
   }
