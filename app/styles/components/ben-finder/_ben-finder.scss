@@ -1,0 +1,15 @@
+.ben-finder {
+  text-align: center;
+
+  .question {
+    font-size: 2em;
+  }
+
+  .btn-container {
+    margin-top: 10px;
+
+    button:first-child {
+      margin-right: 20px;
+    }
+  }
+}
