@@ -1,10 +1,15 @@
 import DS from 'ember-data';
+import Ember from 'ember';
 
 var Question = DS.Model.extend({
   type: DS.attr('string'),
   propertyName: DS.attr('string'),
-  questionText: DS.attr('string'),
-  options: DS.attr()
+  questionPrefix: 'Does the Ben you\'re looking for',
+  question: DS.attr('string'),
+  options: DS.attr(),
+  questionText: Ember.computed('questionPrefix', 'question', function () {
+    return `${this.get('questionPrefix')} ${this.get('question')}?`;
+  })
 });
 
 Question.reopenClass({
@@ -13,13 +18,13 @@ Question.reopenClass({
       id: 1,
       type: 'boolean',
       propertyName: 'hasBeard',
-      questionText: 'Does this Ben have a beard?'
+      question: 'have a beard'
     },
     {
       id: 2,
       type: 'boolean',
       propertyName: 'wearsGlasses',
-      questionText: 'Does this Ben wear glasses?'
+      question: 'wear glasses'
     }
   ]
 });
