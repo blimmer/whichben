@@ -49,7 +49,7 @@ Ben.reopenClass({
     {
       id: 4,
       lastName: 'Hoskins',
-      department: 4,
+      department: 5,
       hairType: 1,
       hasBeard: true,
       wearsGlasses: true,
